@@ -37,6 +37,17 @@ p {
     animation: pulse 1.5s infinite;
 }
 
+.credits{
+    position: relative;
+    text-align: center;
+    align-self: center;
+    top: 425px;
+    left: 800px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+
 @keyframes pulse {
     0% {
         transform: scale(.99);

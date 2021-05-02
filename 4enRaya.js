@@ -1,9 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const squares = document.querySelectorAll('.grid div')
-  const result = document.querySelector('#result')
-  const reset = document.querySelector('#reset')
-  const displayCurrentPlayer = document.querySelector('#current-player')
+  const squares = document.querySelectorAll('.grid div');
+  const result = document.querySelector('#result');
+  const displayCurrentPlayer = document.querySelector('#current-player');
   let currentPlayer = 1
+  const finalResultElement = document.getElementById('final-result');
+  const finalResultElement2 = document.getElementById('final-result2');
+  const resetboton = document.getElementById("clickMe").onclick = botonReset;
+  let win1 = 0;
+  let win2 = 0;
+  
   //Todos las formas posibles de hacer 4 en raya
   const winningArrays = [
     [0, 1, 2, 3],
@@ -77,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     [13, 20, 27, 34],
   ]
 
+  
   function checkBoard() {
     for (let y = 0; y < winningArrays.length; y++) {
       const square1 = squares[winningArrays[y][0]]
@@ -92,7 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         square4.classList.contains('player-one')
       )
       {
-        result.innerHTML = 'Gano el jugador 1'
+        win1++
+        finalResultElement.textContent = win1
+        alert('Gano jugador 1'); 
+        restartTable();
+        verifyFinalWin();
       }
       //Verifica si los cuadrados estan ocupados por el jugador 2
       if (
@@ -102,14 +112,56 @@ document.addEventListener('DOMContentLoaded', () => {
         square4.classList.contains('player-two')
       )
       {
-        result.innerHTML = 'Gano el jugador 2'
-        
-      }
-      
+        win2++
+        finalResultElement2.textContent = win2
+        alert('Gano jugador 2');
+        restartTable();
+        verifyFinalWin();
+      } 
     }
   }
-//Agrega las fichas a los div y verifica los que ya estan tomados
-  for (let i = 0; i < squares.length; i++) {
+  //Funcion para reiniciar la tabla
+  function restartTable() {
+    for(let i = 0; i < 42; i++){
+      squares[i].classList.remove('player-one')
+      squares[i].classList.remove('player-two')
+      squares[i].classList.remove('taken')
+    }
+  }
+  //Funcion para verificar que jugador gano la partida
+  function verifyFinalWin(){
+    if(win1==3){
+      result.innerHTML = 'Gano el jugador 1'; 
+      restartTable();
+      cantPlay();
+    }if(win2==3){
+      result.innerHTML = 'Gano el jugador 2';
+      restartTable();
+      cantPlay();
+    }
+  }
+  //Funcion para reiniciar los puntos de los jugadores
+  function restartPoints(){
+   win1 = 0;
+   win2 = 0;
+   finalResultElement.textContent = win1
+   finalResultElement2.textContent = win2
+  }
+  
+  //Funcion boton reset
+  function botonReset(){
+    restartPoints()
+    restartTable();
+    result.innerHTML = ''
+  }
+
+  function cantPlay(){
+   squares.foreach(part => part = '') 
+  }
+
+  //Agrega las fichas a los div y verifica los que ya estan tomados
+  
+for (let i = 0; i < squares.length; i++) {
     squares[i].onclick = () => {
       if (squares[i + 7].classList.contains('taken') &&!squares[i].classList.contains('taken')) {
         if (currentPlayer == 1) {

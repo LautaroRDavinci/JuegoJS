@@ -133,11 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if(win1==3){
       result.innerHTML = 'Gano el jugador 1'; 
       restartTable();
-      cantPlay();
+      
     }if(win2==3){
       result.innerHTML = 'Gano el jugador 2';
       restartTable();
-      cantPlay();
+      
     }
   }
   //Funcion para reiniciar los puntos de los jugadores

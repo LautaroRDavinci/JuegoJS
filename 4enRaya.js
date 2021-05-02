@@ -133,11 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if(win1==3){
       result.innerHTML = 'Gano el jugador 1'; 
       restartTable();
-      
+      let audio = new Audio();
+          audio.src = './sounds/ganar.mp3';
+          audio.play();  
     }if(win2==3){
       result.innerHTML = 'Gano el jugador 2';
       restartTable();
-      
+      let audio = new Audio();
+          audio.src = './sounds/ganar.mp3';
+          audio.play();  
     }
   }
   //Funcion para reiniciar los puntos de los jugadores
@@ -156,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function cantPlay(){
-   squares.foreach(part => part = '') 
+    
   }
 
   //Agrega las fichas a los div y verifica los que ya estan tomados
@@ -165,17 +169,23 @@ for (let i = 0; i < squares.length; i++) {
     squares[i].onclick = () => {
       if (squares[i + 7].classList.contains('taken') &&!squares[i].classList.contains('taken')) {
         if (currentPlayer == 1) {
-          squares[i].classList.add('taken')
-          squares[i].classList.add('player-one')
+          squares[i].classList.add('taken');
+          squares[i].classList.add('player-one');
           currentPlayer = 2
           displayCurrentPlayer.innerHTML = currentPlayer
+          let audio = new Audio();
+          audio.src = './sounds/coin.mp3';
+          audio.play();
         } else if (currentPlayer == 2){
           squares[i].classList.add('taken')
           squares[i].classList.add('player-two')
           currentPlayer = 1
-          displayCurrentPlayer.innerHTML = currentPlayer        
+          displayCurrentPlayer.innerHTML = currentPlayer  
+          let audio = new Audio();
+          audio.src = './sounds/coin.mp3';
+          audio.play();      
         } 
-      } else alert('No puedos colocar una ficha en esta posición')
+      } else alert('No puedes colocar una ficha en esta posición debes tener una ficha debajo')
       checkBoard()
     }
   }

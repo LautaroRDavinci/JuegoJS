@@ -85,7 +85,8 @@ p {
     height: 90px;
     width: 90px;
   }
-  .reset{
+  
+.reset{
     text-align: center;
     position: relative;
     bottom: 110px;

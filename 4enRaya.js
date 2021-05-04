@@ -131,19 +131,17 @@ document.addEventListener('DOMContentLoaded', () => {
   //Funcion para verificar que jugador gano la partida
   function verifyFinalWin(){
     if(win1==3){
-      result.innerHTML = 'Gano el jugador 1'; 
+      result.innerHTML = '🏆 Gano el jugador 1 🏆'; 
       restartTable();
       let audio = new Audio();
           audio.src = './sounds/ganar.mp3';
-          audio.play();  
-         
+          audio.play();       
     }if(win2==3){
-      result.innerHTML = 'Gano el jugador 2';
+      result.innerHTML = '🏆 Gano el jugador 2 🏆';
       restartTable();
       let audio = new Audio();
           audio.src = './sounds/ganar.mp3';
-          audio.play();  
-            
+          audio.play();              
     }
   }
   //Funcion para reiniciar los puntos de los jugadores

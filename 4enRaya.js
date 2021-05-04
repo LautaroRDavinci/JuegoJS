@@ -136,12 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
       let audio = new Audio();
           audio.src = './sounds/ganar.mp3';
           audio.play();  
+         
     }if(win2==3){
       result.innerHTML = 'Gano el jugador 2';
       restartTable();
       let audio = new Audio();
           audio.src = './sounds/ganar.mp3';
           audio.play();  
+            
     }
   }
   //Funcion para reiniciar los puntos de los jugadores
@@ -159,10 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     result.innerHTML = ''
   }
 
-  function cantPlay(){
-    
-  }
-
+  
   //Agrega las fichas a los div y verifica los que ya estan tomados
   
 for (let i = 0; i < squares.length; i++) {

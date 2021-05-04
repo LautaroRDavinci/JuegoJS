@@ -124,8 +124,8 @@ p {
   .player-two-text {
     color: purple;
   }
-
-@keyframes pulse {
+ 
+  @keyframes pulse {
     0% {
         transform: scale(.99);
         box-shadow: 0 0 0 0 rgba(256, 256, 256, .1);
